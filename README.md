@@ -14,7 +14,7 @@ Clone the repo to your local machine.
 In terminal navigate to the root directory of the repository.
 1. Run
 ```
-bundle install
+npm install
 ```
 2. Run
 ```

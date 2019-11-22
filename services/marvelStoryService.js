@@ -3,7 +3,6 @@ const MarvelCharacter = require('../models/MarvelCharacter');
 
 const fetch = require("node-fetch");
 const crypto = require('crypto');
-const pry = require('pryjs');
 
 module.exports = class MarvelStoryService {
 
