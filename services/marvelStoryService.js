@@ -37,7 +37,6 @@ module.exports = class MarvelStoryService {
 function fetchStoryData(storyId){
   return new Promise(function(resolve, reject){
     const url = setApiUrl(`https://gateway.marvel.com:443/v1/public/stories/${storyId}`);
-    console.log(url);
     fetch(url)
     .then(response => {
       return response.json();
