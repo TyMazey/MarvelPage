@@ -6,6 +6,7 @@ module.exports = class marvelStoryController {
   static async show(request, response){
     const Story = await marvelStoryService.getStoryData();
     const Characters = await marvelStoryService.getCharacterData(Story.characters);
-    response.render('marvelStory', {characters: Characters, StoryInfo: Story});
+    Story.setCharacters(Characters);
+    response.status(200).render('marvelStory', Story);
   }
 }
