@@ -7,9 +7,9 @@ const pry = require('pryjs');
 
 module.exports = class MarvelStoryService {
 
-  static getStoryData(){
+  static getStoryData(storyId){
     return new Promise(function(resolve, reject){
-      fetchStoryData()
+      fetchStoryData(storyId)
       .then(Story => {
         resolve(Story);
       })
@@ -34,9 +34,9 @@ module.exports = class MarvelStoryService {
   }
 }
 
-function fetchStoryData(){
+function fetchStoryData(storyId){
   return new Promise(function(resolve, reject){
-    const url = setApiUrl('https://gateway.marvel.com:443/v1/public/stories/23998');
+    const url = setApiUrl(`https://gateway.marvel.com:443/v1/public/stories/${storyId}`);
     console.log(url);
     fetch(url)
     .then(response => {

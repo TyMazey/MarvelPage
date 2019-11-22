@@ -4,7 +4,8 @@ const pry = require('pryjs');
 
 module.exports = class marvelStoryController {
   static async show(request, response){
-    const Story = await marvelStoryService.getStoryData();
+    var storyId = request.params.id;
+    const Story = await marvelStoryService.getStoryData(storyId);
     const Characters = await marvelStoryService.getCharacterData(Story.characters);
     Story.setCharacters(Characters);
     response.status(200).render('marvelStory', Story);
