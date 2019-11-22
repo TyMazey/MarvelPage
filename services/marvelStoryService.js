@@ -9,12 +9,8 @@ module.exports = class MarvelStoryService {
 
   static getStoryData(){
     return new Promise(function(resolve, reject){
-
-    fetchStoryData()
-    .then(Story => {
-      fetchCharacterData(Story.characters)
-      .then(characterList => {
-        Story.setCharacters(characterList);
+      fetchStoryData()
+      .then(Story => {
         resolve(Story);
       })
       .catch(err => {
@@ -22,19 +18,25 @@ module.exports = class MarvelStoryService {
         reject(err);
       })
     })
-    .catch(err => {
-      console.log(err);
-      reject(err);
-    })
-  })
   }
 
-
+  static getCharacterData(characterList){
+    return new Promise(function(resolve, reject){
+      Promise.all(fetchCharacterData(characterList))
+      .then(characterList => {
+        resolve(characterList);
+      })
+      .catch(err => {
+        console.log(err);
+        reject(err);
+      })
+    })
+  }
 }
 
 function fetchStoryData(){
   return new Promise(function(resolve, reject){
-    const url = setApiUrl('https://gateway.marvel.com:443/v1/public/stories/23997');
+    const url = setApiUrl('https://gateway.marvel.com:443/v1/public/stories/23998');
     console.log(url);
     fetch(url)
     .then(response => {
@@ -49,21 +51,19 @@ function fetchStoryData(){
 }
 
 function fetchCharacterData(characterSet){
-  return new Promise(function(resolve, reject){
-  const charObjects = [];
-  for(i in characterSet) {
-      const url = setApiUrl(characterSet[i].resourceURI);
+  return characterSet.map(function(character) {
+    return new Promise(function(resolve, reject) {
+      const url = setApiUrl(character.resourceURI);
       fetch(url)
       .then(response => {
         return response.json();
       }).then(json => {
-        charObjects.push(new MarvelCharacter(json.data.results[0]));
+        resolve(new MarvelCharacter(json.data.results[0]));
       })
       .catch(err => {
         reject(err);
       })
-    };
-    resolve(charObjects);
+    })
   })
 }
 
