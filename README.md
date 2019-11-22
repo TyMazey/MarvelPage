@@ -27,7 +27,7 @@ MARVEL_PRIVATE_KEY=abcd
 ```
 You will need to replace these keys with your own Marvel Api developer keys to run the application locally.
 If you do not have keys visit [developer.marvel.com](https://developer.marvel.com) to create an account.
-```
+
 5. Spin up a local server by running
 ```
 npm start
