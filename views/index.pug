@@ -2,15 +2,15 @@ doctype html
 html(lang="en")
   head
     title= title
-    script(type='text/javascript').
-      if (foo) bar(1 + 5)
   body
-    h1 Pug - node template engine
+    h1 Marvel Api Project
     #container.col
-      if youAreUsingPug
-        p You are amazing
-      else
-        p Get on it!
       p.
-        Pug is a terse and simple templating language with a
-        strong focus on performance and powerful features.
+        This app can render a title and description of any existing marvel story by ID.
+        Visit '/marvel-story/:id' where ':id' is the id of a Marvel-Story to view the file.
+
+      h1 OR Click on one of the links below to see examples
+      ul
+        li: a(href='/marvel-story/23998') Punisher
+        li: a(href='/marvel-story/918') Fantastic 4
+        li: a(href='/marvel-story/1974') Weapon X

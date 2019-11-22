@@ -3,6 +3,6 @@ var router = express.Router();
 var marvelStoryController = require('../controllers/marvelStoryController');
 
 /* GET home page. */
-router.get('/', marvelStoryController.show);
+router.get('/:id', marvelStoryController.show);
 
 module.exports = router;

@@ -3,9 +3,9 @@ html(lang="en")
   head
     title Marvel Story
   body
-    h1 #{StoryInfo.title}
+    h1 #{title}
     h4 Description
-    p #{StoryInfo.description}
+    p #{description}
     #container.col
       h4 Featured Characters
       ul
@@ -14,4 +14,4 @@ html(lang="en")
           p= character.name
           a(href=character.wikiLink) Marvel Page
           img(src=character.thumbnail)
-      p #{StoryInfo.attributionText}
+      p #{attributionText}
