@@ -42,7 +42,11 @@ function fetchStoryData(storyId){
     .then(response => {
       return response.json();
     }).then(json => {
-      resolve(new Story(json));
+      if(json && json.data){
+        resolve(new Story(json));
+      }else{
+        reject('Invalid Story Id');
+      }
     })
     .catch(err => {
       reject(err)
